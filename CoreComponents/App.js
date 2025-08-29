@@ -13,11 +13,17 @@ export default function App() {
   return (
     <View style={container}>
 
-      <View style={[box,lightblueBg]}>
+      <View style={styles.darkMode}>
+        <Text style={styles.darkModeText}>Style inheritence
+          <Text style={styles.darkModeBoldText}> in bold</Text>
+        </Text>
+      </View>
+
+      <View style={[box, lightblueBg]}>
         <Text>Lightblue box</Text>
       </View>
 
-      <View style={[box,lightgreenBg, androidShadow]}>
+      <View style={[box, lightgreenBg, androidShadow]}>
         <Text>Lightgreen box</Text>
       </View>
     </View>
@@ -29,6 +35,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'plum',
     padding: 60
+  },
+  darkMode: {
+    backgroundColor: 'black'
   },
   title: {},
   box: {
@@ -58,5 +67,11 @@ const styles = StyleSheet.create({
   },
   androidShadow: {
     elevation: 10
+  },
+  darkModeText: {
+    color: 'white'
+  },
+  darkModeBoldText: {
+    fontWeight: 'bold'
   }
 })
