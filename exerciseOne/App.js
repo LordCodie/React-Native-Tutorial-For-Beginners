@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import PokemonCard from './components/PokemonCard';
 
 export default function App() {
@@ -40,10 +40,12 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <PokemonCard {...bulbasaurData}/>
-      <PokemonCard {...charmanderData}/>
-      <PokemonCard {...pikachuData}/>
-      <PokemonCard {...squirtleData}/>
+      <ScrollView>
+        <PokemonCard {...bulbasaurData} />
+        <PokemonCard {...charmanderData} />
+        <PokemonCard {...pikachuData} />
+        <PokemonCard {...squirtleData} />
+      </ScrollView>
     </View>
   );
 }
