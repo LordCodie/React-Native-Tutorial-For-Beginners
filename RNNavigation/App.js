@@ -1,37 +1,47 @@
-import 'react-native-gesture-handler'
-import { NavigationContainer } from '@react-navigation/native'
-import { createDrawerNavigator } from '@react-navigation/drawer'
-import DashboardScreen from './screens/DashboardScreen'
-import SettingsScreen from './screens/SettingsScreen'
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import { ProfileScreen } from "./screens/ProfileScreen";
+import { CourseListScreen } from "./screens/CourseListScreen";
+import SettingsScreen from "./screens/SettingsScreen";
+import Ionicons from "@expo/vector-icons/Ionicons"
+import { AboutStack } from "./AppStack";
 
-const Drawer = createDrawerNavigator()
+const Tab = createBottomTabNavigator()
 
 export default function App() {
     return (
         <NavigationContainer>
-            <Drawer.Navigator
+            <Tab.Navigator
                 screenOptions={{
-                    drawerActiveTintColor: "#333",
-                    drawerActiveBackgroundColor: "lightblue",
-                    drawerContentStyle: {
-                        backgroundColor: '#c6cbef'
-                    }
+                    tabBarLabelPosition: 'below-icon',
+                    tabBarShowLabel: true,
+                    tabBarActiveTintColor: "green",
+                    tabBarInactiveTintColor: "grey"
                 }}
             >
-                <Drawer.Screen
-                    name='Dashboard'
-                    component={DashboardScreen}
+                <Tab.Screen name="Course List" component={CourseListScreen} />
+                <Tab.Screen
+                    name="Profile"
+                    component={ProfileScreen}
                     options={{
-                        title: 'My dashboard',
-                        drawerLabel: 'Dashboard label',
-
+                        tabBarLabel: "My profile",
+                        tabBarIcon: ({ color }) => <Ionicons name="person" size={20} color={color} />,
+                        tabBarBadge: 3
                     }}
                 />
-                <Drawer.Screen
-                    name='Settings'
+                <Tab.Screen
+                    name="Settings"
                     component={SettingsScreen}
                 />
-            </Drawer.Navigator>
+                <Tab.Screen 
+                    name="About Stack"
+                    component={AboutStack}
+                    options={{
+                        headerShown: false
+                    }}
+                />
+            </Tab.Navigator>
         </NavigationContainer>
     )
 }
+
